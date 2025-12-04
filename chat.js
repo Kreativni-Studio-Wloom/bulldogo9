@@ -233,26 +233,92 @@ async function igRenderRightAds(peerUserId = null) {
 			const location = d.location || 'Neuvedeno';
 			const category = d.category || '';
 			const price = d.price || '';
-			const topBadge = d.isTop ? '<span style="color:#ff8a00; font-weight:bold;">🔥 TOP</span>' : '';
 			
-            // Jednoduchá textová položka ve stylu konverzací
+			// TOP badge s gradientem
+			const topBadge = d.isTop ? `
+				<span style="
+					background: linear-gradient(135deg, #ff8a00 0%, #e52e71 100%);
+					color: white;
+					padding: 2px 8px;
+					border-radius: 12px;
+					font-size: 11px;
+					font-weight: 700;
+					text-transform: uppercase;
+					letter-spacing: 0.5px;
+					display: inline-flex;
+					align-items: center;
+					gap: 4px;
+				">
+					<i class="fas fa-fire" style="font-size: 10px;"></i>
+					TOP
+				</span>
+			` : '';
+			
+            // Moderní karta s hover efektem
             items.push(`
-                <div class="ig-conv" style="cursor:pointer; padding:12px; border-bottom:1px solid #e5e7eb;" 
-                     onclick="window.location.href='ad-detail.html?id=${encodeURIComponent(doc.id)}&userId=${encodeURIComponent(userId)}'">
-                    <div style="flex:1;">
-                        <div style="font-weight:600; color:#111827; margin-bottom:4px; display:flex; align-items:center; gap:8px;">
-                            <span>${title}</span>
-                            ${topBadge}
-                        </div>
-                        <div style="font-size:13px; color:#6b7280; margin-bottom:4px;">
-                            📍 ${location} ${category ? '• ' + category : ''}
-                        </div>
-                        ${price ? `<div style="font-size:14px; font-weight:600; color:#667eea;">${price}</div>` : ''}
-                    </div>
-                    <div style="color:#9ca3af; font-size:20px;">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+                <div style="
+					background: white;
+					border-radius: 12px;
+					padding: 14px;
+					margin-bottom: 12px;
+					cursor: pointer;
+					transition: all 0.2s ease;
+					border: 1px solid #e5e7eb;
+					box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+				" 
+				onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102,126,234,0.15)'; this.style.borderColor='#667eea';"
+				onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)'; this.style.borderColor='#e5e7eb';"
+				onclick="window.location.href='ad-detail.html?id=${encodeURIComponent(doc.id)}&userId=${encodeURIComponent(userId)}'">
+					
+					<!-- Hlavička s názvem a TOP badge -->
+					<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:8px;">
+						<h4 style="
+							font-size: 15px;
+							font-weight: 600;
+							color: #111827;
+							line-height: 1.4;
+							flex: 1;
+							margin: 0;
+						">${title}</h4>
+						${topBadge}
+					</div>
+					
+					<!-- Lokace a kategorie -->
+					<div style="
+						display: flex;
+						align-items: center;
+						gap: 8px;
+						font-size: 13px;
+						color: #6b7280;
+						margin-bottom: 8px;
+					">
+						<i class="fas fa-map-marker-alt" style="color:#667eea; font-size:11px;"></i>
+						<span>${location}</span>
+						${category ? `
+							<span style="color:#d1d5db;">•</span>
+							<span>${category}</span>
+						` : ''}
+					</div>
+					
+					<!-- Cena a šipka -->
+					<div style="display:flex; align-items:center; justify-content:space-between;">
+						${price ? `
+							<div style="
+								font-size: 16px;
+								font-weight: 700;
+								background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+								-webkit-background-clip: text;
+								-webkit-text-fill-color: transparent;
+								background-clip: text;
+							">${price}</div>
+						` : '<div></div>'}
+						<i class="fas fa-arrow-right" style="
+							color: #667eea;
+							font-size: 14px;
+							opacity: 0.6;
+						"></i>
+					</div>
+				</div>
             `);
 		});
 		el.innerHTML = items.join('');
