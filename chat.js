@@ -132,7 +132,8 @@ function igHandleDeepLink() {
 		igEnsureChatWith(userId, listingId, listingTitle).then((chatId) => {
 			if (chatId) {
 				igSelectedConvId = chatId;
-				igOpenConversation(chatId);
+				// Předat userId pro načtení inzerátů (pro případ, že konverzace ještě není v seznamu)
+				igOpenConversation(chatId, userId);
 			}
 		}).catch(()=>{});
 	}
@@ -196,8 +197,11 @@ async function igRenderRightAds(peerUserId = null) {
 	const el = igQ('igRightAds');
 	if (!el) return;
 	
+	console.log('📋 igRenderRightAds volána s peerUserId:', peerUserId);
+	
 	// Pokud není zadán peerUserId, zobrazit prázdný stav
 	if (!peerUserId) {
+		console.warn('⚠️ peerUserId je null, zobrazuji prázdný stav');
 		el.innerHTML = '<div style="padding:12px; color:#6b7280;">Vyberte konverzaci pro zobrazení inzerátů</div>';
 		return;
 	}
@@ -334,7 +338,7 @@ function igFilterConversations() {
 }
 
 /** Otevření konverzace **/
-function igOpenConversation(convId) {
+function igOpenConversation(convId, peerUserIdFromUrl = null) {
 	igSelectedConvId = convId;
 	igRenderConversations();
 	// hlavička
@@ -343,9 +347,20 @@ function igOpenConversation(convId) {
 	igQ('igPeerStatus').textContent = 'Online';
 	
 	// Načíst inzeráty druhého účastníka do pravého panelu
-	const peerUserId = conv?.peerId || null;
+	// Použít userId z parametru (deep link) nebo z konverzace
+	const peerUserId = peerUserIdFromUrl || conv?.peerId || null;
+	
+	console.log('🔍 igOpenConversation:', {
+		convId,
+		peerUserIdFromUrl,
+		convPeerId: conv?.peerId,
+		finalPeerUserId: peerUserId
+	});
+	
 	if (peerUserId) {
 		igRenderRightAds(peerUserId);
+	} else {
+		console.warn('⚠️ Nepodařilo se zjistit peerUserId pro načtení inzerátů');
 	}
 	
 	igStartMessagesListener(convId);
