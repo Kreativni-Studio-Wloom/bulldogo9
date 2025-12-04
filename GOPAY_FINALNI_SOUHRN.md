@@ -8,8 +8,8 @@
 
 ### 1. **GoPay Konfigurace** (`gopay-config.js`)
 - ✅ Všechny platební konfigurace
-- ✅ Balíčky: Hobby (39 Kč), Firma (199 Kč)
-- ✅ Topování: 1 den (19 Kč), 1 týden (49 Kč), 1 měsíc (149 Kč)
+- ✅ Balíčky: Hobby (49 Kč), Firma (149 Kč)
+- ✅ Topování: 1 den (19 Kč), 1 týden (69 Kč), 1 měsíc (179 Kč)
 
 ### 2. **Zpracování plateb** (`gopay-payment-handler.js`)
 - ✅ **Načítá informace z GoPay URL parametrů**

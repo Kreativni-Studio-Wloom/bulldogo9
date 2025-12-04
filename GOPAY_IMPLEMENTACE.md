@@ -9,15 +9,15 @@
 
 ### 2. Balíčky (`packages.js` + `packages.html`)
 - ✅ Integrace GoPay URL pro balíčky
-- ✅ Hobby: 39 Kč/měsíc
-- ✅ Firma: 199 Kč/měsíc
+- ✅ Hobby: 49 Kč/měsíc
+- ✅ Firma: 149 Kč/měsíc
 - ✅ Přesměrování na GoPay platební bránu
 
 ### 3. Topování (`top-ads.js` + `top-ads.html`)
 - ✅ Integrace GoPay URL pro topování
 - ✅ 1 den: 19 Kč
-- ✅ 1 týden: 49 Kč
-- ✅ 1 měsíc: 149 Kč
+- ✅ 1 týden: 69 Kč
+- ✅ 1 měsíc: 179 Kč
 
 ### 4. Success/Failed stránky
 - ✅ `success.html` - zpracování úspěšné platby

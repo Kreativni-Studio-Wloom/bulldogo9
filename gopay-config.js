@@ -18,18 +18,18 @@ const GOPAY_CONFIG = {
   // Balíčky
   packages: {
     hobby: {
-      amount: 39, // Kč
-      amountInHellers: 3900, // v haléřích
+      amount: 49, // Kč
+      amountInHellers: 4900, // v haléřích
       currency: "CZK",
       productName: "balicek Hobby",
       orderNumber: "hobby",
       duration: 1, // měsíc
-      description: "První měsíc zdarma a poté se účtuje 39 kč měsíčně",
+      description: "První měsíc zdarma a poté se účtuje 49 kč měsíčně",
       encryptedSignature: "63e93a5e0066f2307418ff108f61516b275ece4346d76c7ddbe2b478e0a0e9e91ecb0519e2c4c1f9341f58f210b5cf53"
     },
     business: {
-      amount: 199, // Kč
-      amountInHellers: 19900, // v haléřích
+      amount: 149, // Kč
+      amountInHellers: 14900, // v haléřích
       currency: "CZK",
       productName: "balicek Firma",
       orderNumber: "firma",
@@ -52,8 +52,8 @@ const GOPAY_CONFIG = {
       encryptedSignature: "664ef997fc47e6cd87a68be27ca798932d2afad9ba4b301a617c99fcf56774b983cf65a030d87ca9341f58f210b5cf53"
     },
     oneweek: {
-      amount: 49, // Kč
-      amountInHellers: 4900, // v haléřích
+      amount: 69, // Kč
+      amountInHellers: 6900, // v haléřích
       currency: "CZK",
       productName: "top oneweek",
       orderNumber: "oneweek",
@@ -62,8 +62,8 @@ const GOPAY_CONFIG = {
       encryptedSignature: "a420bc7fb94129fdc7e4fbf3d83cdf7a76fb01f7448e9e1487f4ed13a1ddb2183e9aa4ef8162d651341f58f210b5cf53"
     },
     onemonth: {
-      amount: 149, // Kč
-      amountInHellers: 14900, // v haléřích
+      amount: 179, // Kč
+      amountInHellers: 17900, // v haléřích
       currency: "CZK",
       productName: "top onemonth",
       orderNumber: "onemonth",
