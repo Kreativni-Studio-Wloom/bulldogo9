@@ -4713,51 +4713,123 @@ select.search-input::-ms-expand { /* skrytí defaultní šipky v IE/Edge */
     border-left: 4px solid #f77c00;
 }
 
+.review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card:hover {
+    box-shadow: 0 4px 16px rgba(247, 124, 0, 0.12);
+    transform: translateY(-2px);
+}
+
 .review-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
 }
 
 .reviewer-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
 }
 
 .reviewer-avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: linear-gradient(135deg, #f77c00 0%, #fdf002 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    font-size: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(247, 124, 0, 0.2);
 }
 
-.reviewer-name {
+.reviewer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.reviewer-details h4 {
     font-weight: 600;
-    color: #2c3e50;
+    color: #111827;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .review-date {
-    color: #7f8c8d;
-    font-size: 0.9rem;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .review-rating {
-    color: #f39c12;
-    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.review-rating .stars {
+    color: #f77c00;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.review-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-content p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #374151;
+    margin: 0;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ===== MODERNÍ DESIGN RECENZÍ ===== */
 .reviews-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .reviews-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 .review-card-modern {
