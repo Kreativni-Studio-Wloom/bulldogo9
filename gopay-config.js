@@ -106,9 +106,13 @@ function createGoPayUrl(type, id) {
     ? window.location.origin 
     : 'https://bulldogo8.vercel.app';
   
+  // Pro Vercel použít URL bez .html, pro lokální s .html
+  const isVercel = baseUrl.includes('vercel.app') || baseUrl.includes('bulldogo');
+  const extension = isVercel ? '' : '.html';
+  
   const returnUrls = {
-    success: `${baseUrl}/success.html`,
-    failed: `${baseUrl}/failed.html`
+    success: `${baseUrl}/success${extension}`,
+    failed: `${baseUrl}/failed${extension}`
   };
   
   // Vytvoření URL parametrů
